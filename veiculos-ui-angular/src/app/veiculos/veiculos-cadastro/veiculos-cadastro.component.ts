@@ -89,4 +89,13 @@ export class VeiculosCadastroComponent implements OnInit {
       .catch(erro => this.messageService.add({severity:'error', summary:'Remoção de Veículo', detail:'Erro ao remover veículo!'}));
   }
 
+  novo(form: NgForm){
+    form.reset();
+    setTimeout(function(){
+      this.veicul = new Veiculo();   
+    }.bind(this), 1);  // para limpar o formulario
+
+    this.router.navigate(['/veiculos/cadastrar']);
+  }
+
 }

@@ -42,7 +42,7 @@
      
         <div class="p-col-12">
           <button pButton type="submit" label="Salvar" [disabled]="!formulario.form.valid"></button>
-          <button pButton type="button" label="Novo" class="p-button-info"></button>
+          <button pButton type="button" label="Novo" class="p-button-info" (click)="novo(formulario)"></button>
           <a routerLink="/veiculos">Pesquisar</a>
         </div>
       </div>
