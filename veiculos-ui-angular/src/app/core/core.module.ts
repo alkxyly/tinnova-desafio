@@ -4,6 +4,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import localePt from '@angular/common/locales/pt';
+import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 
 registerLocaleData(localePt, 'pt-BR');
@@ -14,11 +15,13 @@ registerLocaleData(localePt, 'pt-BR');
      PaginaNaoEncontradaComponent],
   imports: [
     CommonModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule
   ],
   exports:[
       NavbarComponent,
-     ToastModule
+     ToastModule,
+     ConfirmDialogModule
   ],    
   providers:[MessageService,
     { provide: LOCALE_ID, useValue: 'pt-BR' }]

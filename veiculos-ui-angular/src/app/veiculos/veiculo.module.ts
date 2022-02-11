@@ -28,6 +28,7 @@ import { SharedModule } from '../shared/shared.module';
     ButtonModule,
     InputTextModule,
     SharedModule,
+    
     VeiculosRountingModule    
   ],
   providers:[]

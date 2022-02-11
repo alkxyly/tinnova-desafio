@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Veiculo } from 'src/app/core/model';
 import { VeiculoService } from '../veiculo.service';
 
@@ -22,7 +23,8 @@ export class VeiculosCadastroComponent implements OnInit {
     private title: Title,
     private messageService: MessageService,
     private route: ActivatedRoute,
-    private router: Router,) {}
+    private router: Router,
+    private errorHandler: ErrorHandlerService) {}
 
   ngOnInit(): void {
     
@@ -49,7 +51,7 @@ export class VeiculosCadastroComponent implements OnInit {
         this.messageService.add({severity:'success', summary:'Atualização', detail:'Veículo atualizado com sucesso!'});
         this.editando = false;
       })
-      .catch(erro => this.messageService.add({severity:'error', summary:'Atualização', detail:'Erro ao atualizar veículo!'}));
+      .catch(erro => this.errorHandler.handle(erro));
   }
    
   cadastrar(form: NgForm){
@@ -58,7 +60,7 @@ export class VeiculosCadastroComponent implements OnInit {
       form.reset();
       this.veicul = new Veiculo();
     })
-    .catch(erro => this.messageService.add({severity:'error', summary:'Cadastro de Veículo', detail:'Erro ao Cadastrar Veículo'}));
+    .catch(erro => this.errorHandler.handle(erro));
   }
 
   buscarPorId(id: number){
@@ -67,7 +69,7 @@ export class VeiculosCadastroComponent implements OnInit {
           this.veicul  = veiculo;
           this.atualizarTituloEdicao();         
       })
-      .catch(erro => this.messageService.add({severity:'error', summary:'Edição de Veículo', detail:'Erro ao Buscar Veículo'})); 
+      .catch(erro => this.errorHandler.handle(erro));
     }    
   }
 
@@ -86,7 +88,7 @@ export class VeiculosCadastroComponent implements OnInit {
         this.veicul = new Veiculo();
         this.messageService.add({severity:'success', summary:'Remoção de Veículo', detail:'Veículo removido com sucesso!'});
       })
-      .catch(erro => this.messageService.add({severity:'error', summary:'Remoção de Veículo', detail:'Erro ao remover veículo!'}));
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   novo(form: NgForm){

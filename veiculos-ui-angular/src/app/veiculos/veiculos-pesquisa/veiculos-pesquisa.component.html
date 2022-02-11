@@ -1,6 +1,6 @@
 
 <div class="container"> 
-  <form autocomplete="off">
+  <form #formulario="ngForm" autocomplete="off">
       <div class="p-grid">
         <div class="p-col-12">
           <h1>Veiculos</h1>
@@ -30,7 +30,7 @@
                 <td>{{ veiculo.vendido == true ? 'Sim' : 'Não' }}</td>
                 <td class="col-acoes">
                   <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/veiculos', veiculo.id]"></a>
-                  <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+                  <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(veiculo)"></button>
                 </td>  
               </tr>
             </ng-template>
