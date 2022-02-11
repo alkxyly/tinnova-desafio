@@ -1,0 +1,51 @@
+
+<div class="container">
+
+    <form #formulario="ngForm" autocomplete="off" (ngSubmit)="salvar(formulario)">    
+      <div class="p-grid">
+        <div class="p-col-12">
+          <h1>{{editando ? 'Edição de' : 'Novo'}} Veículos</h1>
+        </div>
+             
+        <div class="p-col-12 p-md-12 p-fluid">
+            <label>Veiculo</label>
+            <input pInputText type="text" name="veiculo" 
+              ngModel #v="ngModel" required  [(ngModel)]="veicul.veiculo">           
+        </div>
+
+        <div class="p-col-12 p-md-12 p-fluid">
+          <label>Descrição</label>
+          <input pInputText type="text" name="descricao" 
+            ngModel #descricao="ngModel" required minlength="5" [(ngModel)]="veicul.descricao">
+          
+          <app-message [control]="descricao.control" error="required" text="Informe a descrição"></app-message>
+          <app-message [control]="descricao" error="minlength"
+          text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ descricao.errors?.minlength?.actualLength }}"></app-message>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>Marca</label>
+          <input pInputText type="text" name="marca" 
+            ngModel #marca="ngModel" required minlength="3" [(ngModel)]="veicul.marca">
+            <app-message [control]="marca.control" error="required" text="Informe a marca"></app-message>
+            <app-message [control]="marca" error="minlength"
+            text="Mínimo de {{ marca.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ marca.errors?.minlength?.actualLength }}"></app-message>
+        </div>
+
+        <div class="p-col-12 p-md-6 p-fluid">
+          <label>Ano</label>
+          <input pInputText type="text" name="ano" 
+            ngModel #ano="ngModel" required [(ngModel)]="veicul.ano">
+
+            <app-message [control]="ano.control" error="required" text="Informe o ano"></app-message>  
+        </div> 
+     
+        <div class="p-col-12">
+          <button pButton type="submit" label="Salvar" [disabled]="!formulario.form.valid"></button>
+          <button pButton type="button" label="Novo" class="p-button-info"></button>
+          <a routerLink="/veiculos">Pesquisar</a>
+        </div>
+      </div>
+  
+    </form>
+  </div>

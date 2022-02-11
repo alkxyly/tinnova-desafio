@@ -1,0 +1,53 @@
+
+<div class="container"> 
+  <form autocomplete="off">
+      <div class="p-grid">
+        <div class="p-col-12">
+          <h1>Veiculos</h1>
+        </div>
+      </div>
+    <div class="ui-g">
+        <div class="ui-g-12">
+          <p-table [value]="veiculos" [paginator]="true" [responsive]="true" [rows]="10">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Veiculo</th>
+                <th>Marca</th>
+                <th style="width: 10%;">Ano</th>
+                <th style="width: 30%;">Descricao</th>
+                <th style="width: 3%;">Vendido</th>
+                <th></th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-veiculo>
+              <tr>
+                <td>{{ veiculo.veiculo }}</td>
+                <td>{{ veiculo.marca }}</td>
+                <td>{{ veiculo.ano }}</td>
+                <td>
+                  {{ veiculo.descricao }}
+                </td>
+                <td>{{ veiculo.vendido == true ? 'Sim' : 'Não' }}</td>
+                <td class="col-acoes">
+                  <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/veiculos', veiculo.id]"></a>
+                  <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+                </td>  
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td colspan="6">
+                  Nenhum Veículo encontrado
+                </td>
+              </tr>
+            </ng-template>
+
+          </p-table>
+        </div>
+    </div>
+  </form>
+ 
+  <a pButton label="Cadastrar Veiculo" routerLink="/veiculos/cadastrar"></a>
+
+</div>
