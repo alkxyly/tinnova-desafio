@@ -8,7 +8,11 @@
       </div>
     <div class="ui-g">
         <div class="ui-g-12">
-          <p-table [value]="veiculos" [paginator]="true" [responsive]="true" [rows]="10">
+          <p-table [value]="veiculos" 
+                   [paginator]="true"
+                   [responsive]="true" 
+                   [rows]="3" #tabela>
+
             <ng-template pTemplate="header">
               <tr>
                 <th>Veiculo</th>
@@ -19,6 +23,7 @@
                 <th></th>
               </tr>
             </ng-template>
+            
             <ng-template pTemplate="body" let-veiculo>
               <tr>
                 <td>{{ veiculo.veiculo }}</td>

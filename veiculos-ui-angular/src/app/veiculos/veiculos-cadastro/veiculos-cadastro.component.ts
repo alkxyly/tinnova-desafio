@@ -73,22 +73,12 @@ export class VeiculosCadastroComponent implements OnInit {
     }    
   }
 
-
   get editandoVeiculo(){
     return Boolean(this.veicul.id);
   }
 
   atualizarTituloEdicao(){
     this.title.setTitle(`Edição de Veículo: ${this.veicul.veiculo}`);
-  }
-
-  deletar(veiculo: Veiculo){
-    this.veiculoService.deletar(veiculo.id)
-      .then(() => {
-        this.veicul = new Veiculo();
-        this.messageService.add({severity:'success', summary:'Remoção de Veículo', detail:'Veículo removido com sucesso!'});
-      })
-      .catch(erro => this.errorHandler.handle(erro));
   }
 
   novo(form: NgForm){
